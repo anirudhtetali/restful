@@ -1,15 +1,9 @@
-       query = connect.execute("select Date from daily")
-        data = {'Date': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]}
-        if data == {"Date": []}:
-            return "Data not found"
-        else:
-            return data
+
 from flask import Flask, request, make_response, jsonify, abort
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 
 dbs = create_engine('sqlite:///cincydb.db')
-
 app = Flask(__name__)
 api = Api(app)
 
